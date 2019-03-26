@@ -10,7 +10,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 </head>
 <body>
-
 <div class="jumbotron text-center">
   <h1>My First Bootstrap Page</h1>
   <p>Resize this responsive page to see the effect!</p> 
@@ -19,7 +18,15 @@
   <div class="row">
     <div class="col-sm-4">
       <h3>Column One</h3>
-      <p>Data and images go here</p>     
+      <p>Data and images go here</p>
+      <br>
+      <br>
+      <br>
+      <h3> Today: </h3>
+      <p> According to WeatherApi.com:	</p>
+      <p> Weather: {{weather.weathertype}} </p>
+      <p> Temp: {{weather.tempreture}} K </p>
+
     </div>
     <div class="col-sm-4">
       <h3>Column Two</h3>
@@ -31,7 +38,6 @@
     </div>
   </div>
 </div>
-Accoring to WeatherAPI.com The Weather is {{weather.weathertype}} and the Tempreture is {{weather.tempreture}} K  :-)
 </body>
 </html>
 
