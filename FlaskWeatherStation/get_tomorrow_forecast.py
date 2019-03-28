@@ -1,14 +1,22 @@
 #from urllib.request import urlopen
 #import xml.etree.ElementTree as etree
 import requests 
+import datetime
 
-
-def get_three_day_forecast():
+def get_tomorrow_forecast():
 	weather_forecast_url = 'https://api.openweathermap.org/data/2.5/forecast?APPID=8866dd7ea1284048f96667ab4b692c1c&q=Manchester,UK'
 	weather_forecast = requests.get(weather_forecast_url).json()
-	date = (datetime.datetime.today()).strftime("%y-%m-%d")
-	#date2 = (date1 + datetime.timedelta(200000)).strftime("%y-%m-%d")
-	return weather_forecast
+
+	today = datetime.datetime.today()
+	tomorrow = (today + datetime.timedelta(days=1)).strftime("%y-%m-%d")
+
+	forecast_date = weather_forecast["list"][0]["dt_txt"]
+	forecast_date2 = forecast_date[0:11]
+	 
+	
+
+
+	return forecast_date2
 
 # API code for 3-5 day forecast is 8866dd7ea1284048f96667ab4b692c1c
 
