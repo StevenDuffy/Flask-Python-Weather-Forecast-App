@@ -5,6 +5,14 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
+  <style>
+  img {
+    max-width:100%;
+  }
+  .alignment {
+    text-align : center;
+  }
+  </style>
 </head>
 <!-- Inline styles need to be resolved -->
 <body>
@@ -13,52 +21,60 @@
   <p>3-Day Weather Forecast</p> 
 </div>
 <div class="container" style="margin-bottom:20px;">
-<form action="/" method="POST" >
-  <input class="text_muted" type="text" placeholder="Enter city here.." style="font-size:0.87rem; vertical-align:middle; border-radius: 2px;" >
-  <input class="btn btn-light btn-sm" type="submit" value="Submit" >
+<form action="/" method="POST">
+  <input class="text_muted" type="text" placeholder="Enter city here.." style="font-size:0.87rem; vertical-align:middle; border-radius: 2px;">
+  <input class="btn btn-light btn-sm" type="submit" value="Submit">
 </form>
 </div>
-<div class="container">
+<div class="container alignment">
   <div class="row">
-    <div class="col-sm" align=center>
-      <h6>0.00 - 3.00</h6>
-      <img src="..\static\cloudy.gif" style="max-width:100%;">
-      <p>{{date}}</p>      
+    <div class="col-sm" >
+      <h6>0000 - 3000</h6>
+      <img src="..\static\cloudy.gif">
+      <p>{{date[0].weather}}</p>
+      <p>{{date[0].temperature}}</p>        
     </div>
-    <div class="col-sm" align=center>
-      <h6>3.00 - 6.00</h6>
-      <img src="..\static\cloudy.gif"  style="max-width:100%;">
-      <p>Data and images go here</p>          
+    <div class="col-sm" >
+      <h6>3000 - 6000</h6>
+      <img src="..\static\cloudy.gif">
+      <p>{{date[1].weather}}</p>       
+      <p>{{date[1].temperature}}</p>        
     </div>
-    <div class="col-sm" align=center>
-      <h6>6.00 - 9.00</h6>
-      <img src="..\static\cloudy.gif"  style="max-width:100%;">
-      <p>Data and images go here</p>    
+    <div class="col-sm" >
+      <h6>6000 - 9000</h6>
+      <img src="..\static\cloudy.gif">
+      <p>{{date[2].weather}}</p>       
+      <p>{{date[2].temperature}}</p>  
     </div>
-    <div class="col-sm" align=center>
-      <h6>9.00 - 12.00</h6> 
-      <img src="..\static\cloudy.gif"  style="max-width:100%;">       
-      <p>Data and images go here</p>      
+    <div class="col-sm" >
+      <h6>9000 - 1200</h6> 
+      <img src="..\static\cloudy.gif">       
+      <p>{{date[3].weather}}</p>       
+      <p>{{date[3].temperature}}</p>    
     </div>    
-    <div class="col-sm" align=center>  
-        <h6>12.00 - 15.00</h6> 
-        <img src="..\static\cloudy.gif"  style="max-width:100%;">       
-      <p>Data and images go here</p>      
+    <div class="col-sm" >  
+        <h6>1200 - 1500</h6> 
+        <img src="..\static\cloudy.gif">       
+      <p>{{date[4].weather}}</p>       
+      <p>{{date[4].temperature}}</p>    
     </div> 
-    <div class="col-sm" align=center>  
-        <h6>15.00 - 18.00</h6>    
-        <img src="..\static\cloudy.gif"  style="max-width:100%;">  
-      <p>Data and images go here</p>      
+    <div class="col-sm" >  
+        <h6>1500 - 1800</h6>    
+        <img src="..\static\cloudy.gif">  
+      <p>{{date[5].weather}}</p>       
+      <p>{{date[5].temperature}}</p>    
     </div> 
-    <div class="col-sm" align=center>  
-      <h6>18.00 - 21.00</h6> 
-      <img src="..\static\cloudy.gif"  style="max-width:100%;">       
-      <p>Data and images go here</p>      
+    <div class="col-sm" >  
+      <h6>1800 - 2100</h6> 
+      <img src="..\static\cloudy.gif">       
+      <p>{{date[6].weather}}</p>       
+      <p>{{date[6].temperature}}</p>    
     </div> 
-    <div class="col-sm" align=center>  
-      <h6>21.00 - 0.00</h6>  
-      <img src="..\static\cloudy.gif"  style="max-width:100%;">      
-      <p>Data and images go here</p>      
+    <div class="col-sm" >  
+      <h6>2100 - 0000</h6>  
+      <img src="..\static\cloudy.gif">      
+      <p>{{date[7].weather}}</p>       
+      <p>{{date[7].temperature}}</p>    
     </div>     
   </div>
   

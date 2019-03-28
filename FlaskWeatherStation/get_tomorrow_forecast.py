@@ -4,19 +4,34 @@ import requests
 import datetime
 
 def get_tomorrow_forecast():
-	weather_forecast_url = 'https://api.openweathermap.org/data/2.5/forecast?APPID=8866dd7ea1284048f96667ab4b692c1c&q=Manchester,UK'
+	weather_forecast_url = 'https://api.openweathermap.org/data/2.5/forecast?APPID=8866dd7ea1284048f96667ab4b692c1c&q=Cambridge,UK&cnt=16&units=metric'
 	weather_forecast = requests.get(weather_forecast_url).json()
-
+	
+   
 	today = datetime.datetime.today()
 	tomorrow = (today + datetime.timedelta(days=1)).strftime("%y-%m-%d")
+    
+	#forecast_date = weather_forecast["list"][3]["dt_txt"][2:10]
 
-	forecast_date = weather_forecast["list"][0]["dt_txt"]
-	forecast_date2 = forecast_date[0:11]
+	
+	weatherobjects = []
+
+	for three_hour_data in weather_forecast["list"]:
+		weather_object = {"weather":"", "temperature":""}
+		if three_hour_data["dt_txt"][2:10] == tomorrow:
+			weather_object["weather"] = three_hour_data["weather"][0]["main"]
+			weather_object["temperature"] = three_hour_data["main"]["temp"]
+			weatherobjects.append(weather_object)
+			
+	return weatherobjects 
+	
+    
+
 	 
 	
 
 
-	return forecast_date2
+	
 
 # API code for 3-5 day forecast is 8866dd7ea1284048f96667ab4b692c1c
 
