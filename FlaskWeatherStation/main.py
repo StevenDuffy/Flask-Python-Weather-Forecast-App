@@ -22,6 +22,7 @@ def three_day_forecast():
 	# forecast = get_bbc_weather() 
 	date = (datetime.datetime.today()).strftime("%y-%m-%d")
 	#date2 = (date1 + datetime.timedelta(200000)).strftime("%y-%m-%d")
+	
 	return render_template('home.html', date=date)
 
 # Original method. Gets current weather so will likely be used for the index page . 

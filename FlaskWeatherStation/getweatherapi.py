@@ -20,4 +20,3 @@ def getweatherapi(Location):
 
 	return weatherapidic
 
-#8866dd7ea1284048f96667ab4b692c1c
