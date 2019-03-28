@@ -1,6 +1,6 @@
 from urllib.request import urlopen
 import requests 
-import simplejson as json
+
 
 
 def getweatherapi(Location):
@@ -19,3 +19,5 @@ def getweatherapi(Location):
 	}
 
 	return weatherapidic
+
+#8866dd7ea1284048f96667ab4b692c1c

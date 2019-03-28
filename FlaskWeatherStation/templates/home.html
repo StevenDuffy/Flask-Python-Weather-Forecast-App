@@ -1,42 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>WeatherWatch</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
 </head>
 <body>
 <div class="jumbotron text-center">
-  <h1>My First Bootstrap Page</h1>
-  <p>Resize this responsive page to see the effect!</p> 
+  <h1>WeatherWatch</h1>
+  <p>3-Day Weather Forecast</p> 
 </div>
 <div class="container">
   <div class="row">
-    <div class="col-sm-4">
-      <h3>Column One</h3>
-      <p>Data and images go here</p>
-      <br>
-      <br>
-      <br>
-      <h3> Today: </h3>
-      <p> According to WeatherApi.com:	</p>
-      <p> Weather: {{weather.weathertype}} </p>
-      <p> Temp: {{weather.tempreture}} K </p>
-
-    </div>
-    <div class="col-sm-4">
-      <h3>Column Two</h3>
-      <p>Data and images go here</p>    
-    </div>
-    <div class="col-sm-4">
-      <h3>Column Three</h3>        
+    <div class="col" >
+      <h6 align=center>0.00 - 3.00</h6>
+      <img src="..\static\cloudy.gif" width="110" align="right">
       <p>Data and images go here</p>      
     </div>
+    <div class="col" >
+      <h6 align=center>3.00 - 6.00</h6>
+      <p>Data and images go here</p>          
+    </div>
+    <div class="col" >
+      <h6 align=center>6.00 - 9.00</h6>
+      <p>Data and images go here</p>    
+    </div>
+    <div class="col">
+      <h6 align=center>9.00 - 12.00</h6>        
+      <p>Data and images go here</p>      
+    </div>    
+    <div class="col" >  
+        <h6 align=center>12.00 - 15.00</h6>        
+      <p>Data and images go here</p>      
+    </div> 
+    <div class="col" >  
+        <h6 align=center>15.00 - 18.00</h6>      
+      <p>Data and images go here</p>      
+    </div> 
+    <div class="col" >  
+      <h6 align=center>18.00 - 21.00</h6>        
+      <p>Data and images go here</p>      
+    </div> 
+    <div class="col" >  
+      <h6 align=center>21.00 - 0.00</h6>        
+      <p>Data and images go here</p>      
+    </div>     
   </div>
+
 </div>
 </body>
 </html>
