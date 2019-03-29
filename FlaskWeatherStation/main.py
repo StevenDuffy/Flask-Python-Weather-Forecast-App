@@ -1,5 +1,5 @@
 from flask import Flask, render_template, url_for, flash, redirect, request
-import requests 
+import requests
 import simplejson as json
 import xml.etree.ElementTree as etree
 from urllib.request import urlopen
@@ -15,29 +15,39 @@ app = Flask(__name__)
 #	tree = etree.parse(urlopen(weather_bbc))
 #	return tree
 
-@app.route("/", methods=['GET', 'POST'])
+
+@app.route("/", methods=['GET'])
 def next_day_forecast():
-	weather_data = get_tomorrow_forecast("Cambridge") 
+
+	#weather_data = get_tomorrow_forecast("Falkirk")
+	weather_data = None
 	return render_template('home.html', weather_data=weather_data)
 
-@app.route("/location", methods=['GET', 'POST'])
-def location_next_day_forecast():
-	location = request.form["location"]
-	weather_data = get_tomorrow_forecast(location) 
-	return render_template('home.html', weather_data=weather_data)	
 
-# Original method. Gets current weather so will likely be used for the index page. 
+@app.route("/location", methods=['GET'])
+def location_next_day_forecast():
+	location = request.args.get("location")
+	try:
+		weather_data = get_tomorrow_forecast(location)
+		return render_template('home.html', weather_data=weather_data)
+	except:
+		# Need to generate the error message for the user.
+		# return redirect(url_for('next_day_forecast', location=False))
+		return render_template('home.html', weather_data=None, error = False)
+
+# Original method. Gets current weather so will likely be used for the index page.
 # @app.route("/", methods=['GET', 'POST'])
+
+
 def home():
 	Weather = getweatherapi('Cambridge')
-	return render_template('home.html', weather = Weather)
+	return render_template('home.html', weather=Weather)
 
 # Original html, I had to remove it from home.html temporarily to test other features.
 # <p> According to WeatherApi.com:	</p>
 # <p> Weather: {{weather.weathertype}} </p>
 # <p> Temp: {{weather.tempreture}} K </p>
 
+
 if __name__ == '__main__':
 	app.run(debug='true')
-
-

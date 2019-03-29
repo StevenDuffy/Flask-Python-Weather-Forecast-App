@@ -48,11 +48,15 @@
     <p>3-Day Weather Forecast</p>
   </div>
   <div class="container" style="margin-bottom:20px;">
-    <form name="locationForm" action="/location" method="POST" onsubmit="return validate()">
+    <form name="locationForm" action="/location" method="GET" onsubmit="return validate()">
       <input name="location" class="text_muted text" type="text" placeholder="Enter city here..">
       <input class="btn btn-light btn-sm" type="submit" value="Submit">
     </form>
+    {%if error == False %}
+    <p class="text-info small">Location not found.</p>
+    {% endif %}
   </div>
+  {%if weather_data %}
   <div class="container alignment">
     <div class="row">
       <!--Will look at looping this and also adding alt text-->
@@ -106,6 +110,7 @@
       </div>
     </div>
   </div>
+  {% endif %}
 </body>
 
 </html>
