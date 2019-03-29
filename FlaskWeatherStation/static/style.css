@@ -1,0 +1,11 @@
+img {
+    max-width: 100%;
+  }
+.alignment {
+    text-align: center;            
+  }
+  .text{
+    font-size:0.87rem; 
+    vertical-align:middle; 
+    border-radius: 2px;
+  }

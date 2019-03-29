@@ -18,19 +18,16 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
 def three_day_forecast():
-	forecast = get_tomorrow_forecast() 
-	date = (datetime.datetime.today()).strftime("%y-%m-%d")
-	#date2 = (date1 + datetime.timedelta(200000)).strftime("%y-%m-%d")
-	
-	return render_template('home.html', date=forecast)
+	weather_data = get_tomorrow_forecast() 
+	return render_template('home.html', weather_data=weather_data)
 
-# Original method. Gets current weather so will likely be used for the index page . 
+# Original method. Gets current weather so will likely be used for the index page. 
 # @app.route("/", methods=['GET', 'POST'])
 def home():
 	Weather = getweatherapi('Cambridge')
 	return render_template('home.html', weather = Weather)
 
-# Original html, I had to remove it from home.html temporarily.
+# Original html, I had to remove it from home.html temporarily to test other features.
 # <p> According to WeatherApi.com:	</p>
 # <p> Weather: {{weather.weathertype}} </p>
 # <p> Temp: {{weather.tempreture}} K </p>

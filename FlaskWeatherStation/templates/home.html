@@ -5,79 +5,100 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> 
-  <style>
-  img {
-    max-width:100%;
-  }
-  .alignment {
-    text-align : center;
-  }
-  </style>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"/>
+  <script>
+    function generateimages()
+    {
+      var x = document.getElementsByTagName("img");
+      var y = document.getElementsByClassName("weather")
+      for (var i = 0 ; i < 8 ; i++)
+      {
+        switch(y[i].innerHTML)
+        {
+          case "Clear":
+          x[i].src="static/sunny.gif";
+          break;
+          case "Clouds":
+          x[i].src="static/cloudy.gif";
+          break;
+          case "Rain":
+          x[i].src="static/rain.gif";
+          break;
+          case "Thunder":
+          x[i].src="static/thunder.gif";
+          break;
+          default:
+          x[i].src="#";
+          break;
+        }
+      }
+    }
+  </script>
 </head>
 <!-- Inline styles need to be resolved -->
-<body>
+<body onload="generateimages()">
 <div class="jumbotron text-center">
   <h1>WeatherWatch</h1>
   <p>3-Day Weather Forecast</p> 
 </div>
 <div class="container" style="margin-bottom:20px;">
-<form action="/" method="POST">
-  <input class="text_muted" type="text" placeholder="Enter city here.." style="font-size:0.87rem; vertical-align:middle; border-radius: 2px;">
-  <input class="btn btn-light btn-sm" type="submit" value="Submit">
+<form>
+  <input class="text_muted text" type="text" placeholder="Enter city here.."> 
+  <input class="btn btn-light btn-sm" type="button" value="Submit" onclick='generateimages()'>
 </form>
 </div>
 <div class="container alignment">
   <div class="row">
+    <!--Will look at looping this and also adding alt text-->
     <div class="col-sm" >
       <h6>0000 - 3000</h6>
-      <img src="..\static\cloudy.gif">
-      <p>{{date[0].weather}}</p>
-      <p>{{date[0].temperature}}</p>        
+      <img> 
+      <p class="weather">{{weather_data[0].weather}}</p>
+      <p >{{weather_data[0].temperature}}<sup>o</sup>C</p>        
     </div>
     <div class="col-sm" >
       <h6>3000 - 6000</h6>
-      <img src="..\static\cloudy.gif">
-      <p>{{date[1].weather}}</p>       
-      <p>{{date[1].temperature}}</p>        
+      <img>
+      <p class="weather">{{weather_data[1].weather}}</p>       
+      <p>{{weather_data[1].temperature}}<sup>o</sup>C</p>        
     </div>
     <div class="col-sm" >
       <h6>6000 - 9000</h6>
-      <img src="..\static\cloudy.gif">
-      <p>{{date[2].weather}}</p>       
-      <p>{{date[2].temperature}}</p>  
+      <img>
+      <p class="weather">{{weather_data[2].weather}}</p>       
+      <p>{{weather_data[2].temperature}}<sup>o</sup>C</p>  
     </div>
     <div class="col-sm" >
       <h6>9000 - 1200</h6> 
-      <img src="..\static\cloudy.gif">       
-      <p>{{date[3].weather}}</p>       
-      <p>{{date[3].temperature}}</p>    
+      <img>       
+      <p class="weather">{{weather_data[3].weather}}</p>       
+      <p>{{weather_data[3].temperature}}<sup>o</sup>C</p>    
     </div>    
     <div class="col-sm" >  
         <h6>1200 - 1500</h6> 
-        <img src="..\static\cloudy.gif">       
-      <p>{{date[4].weather}}</p>       
-      <p>{{date[4].temperature}}</p>    
+        <img>       
+      <p class="weather">{{weather_data[4].weather}}</p>       
+      <p>{{weather_data[4].temperature}}<sup>o</sup>C</p>    
     </div> 
     <div class="col-sm" >  
         <h6>1500 - 1800</h6>    
-        <img src="..\static\cloudy.gif">  
-      <p>{{date[5].weather}}</p>       
-      <p>{{date[5].temperature}}</p>    
+        <img>  
+      <p class="weather">{{weather_data[5].weather}}</p>       
+      <p>{{weather_data[5].temperature}}<sup>o</sup>C</p>    
     </div> 
     <div class="col-sm" >  
       <h6>1800 - 2100</h6> 
-      <img src="..\static\cloudy.gif">       
-      <p>{{date[6].weather}}</p>       
-      <p>{{date[6].temperature}}</p>    
+      <img>       
+      <p class="weather">{{weather_data[6].weather}}</p>       
+      <p>{{weather_data[6].temperature}}<sup>o</sup>C</p>    
     </div> 
     <div class="col-sm" >  
       <h6>2100 - 0000</h6>  
-      <img src="..\static\cloudy.gif">      
-      <p>{{date[7].weather}}</p>       
-      <p>{{date[7].temperature}}</p>    
+      <img>      
+      <p class="weather">{{weather_data[7].weather}}</p>       
+      <p>{{weather_data[7].temperature}}<sup>o</sup>C</p>    
     </div>     
-  </div>
-  
+  </div>  
 </div>
 </body>
 </html>
