@@ -9,7 +9,7 @@ import urllib
 def get_tomorrow_forecast(Location):
 	today = datetime.datetime.today()
 	tomorrow = (today + datetime.timedelta(days=1)).strftime("%y-%m-%d")
-	# Hard coded. Need to adjust and encode this.
+	# Hard-coded. Need to adjust and encode this.
 	# urllib.parse.urlencode()
 	weather_forecast_url = 'https://api.openweathermap.org/data/2.5/forecast?APPID=8866dd7ea1284048f96667ab4b692c1c&q=' + \
 		Location + ',UK&cnt=16&units=metric'
@@ -20,7 +20,7 @@ def get_tomorrow_forecast(Location):
 		if three_hour_data["dt_txt"][2:10] == tomorrow:
 			weather_object = {"weather": "", "temperature": ""}
 			weather_object["weather"] = three_hour_data["weather"][0]["main"]
-			weather_object["temperature"] = three_hour_data["main"]["temp"]
+			weather_object["temperature"] = float(three_hour_data["main"]["temp"]).__round__()
 			weatherobjects.append(weather_object)
 
 	return weatherobjects
