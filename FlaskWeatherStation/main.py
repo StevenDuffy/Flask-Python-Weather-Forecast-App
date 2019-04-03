@@ -18,22 +18,20 @@ app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def next_day_forecast():
-
-	#weather_data = get_tomorrow_forecast("Falkirk")
-	weather_data = None
-	return render_template('home.html', weather_data=weather_data)
+	return render_template('home.html')
 
 
 @app.route("/location", methods=['GET'])
 def location_next_day_forecast():
 	location = request.args.get("location")
 	try:
-		weather_data = get_tomorrow_forecast(location)
-		return render_template('home.html', weather_data=weather_data)
-	except:
+		weather_data_one = get_tomorrow_forecast(location, 1)
+		
+		return render_template('home.html', weather_data_one=weather_data_one)
+	except:		
 		# Need to generate the error message for the user.
 		# return redirect(url_for('next_day_forecast', location=False))
-		return render_template('home.html', weather_data=None, error = False)
+		return render_template('home.html', error = True)
 
 # Original method. Gets current weather so will likely be used for the index page.
 # @app.route("/", methods=['GET', 'POST'])
