@@ -2,8 +2,10 @@ import sqlite3
 
 
 class database:
+
     __dbconn = None
     __dbconnection = None
+
     @staticmethod 
     def getInstance():
         """ Static access method. """
@@ -18,14 +20,16 @@ class database:
             database.__dbconn = self
             self.__dbconnection = sqlite3.connect('users.db')
 
-    def createtable(self):
-       # self.__dbconnection.cursor().execute("""INSERT INTO users VALUES ('David', 'Duffy', 'DDuffy', 'Gigantasaurusrex')""")
-       # self.__dbconnection.commit()
-        command = self.__dbconnection.cursor()
-        command.execute("SELECT * FROM users;")
-        print(command.fetchall())
-        self.__dbconnection.commit()
-        self.__dbconnection.close()
+
+
+    def createtable(self):        
+        #self.__dbconnection.cursor().execute("""INSERT INTO users VALUES ('Steven', 'Duffy', 'SDuffy', 'Dragon')""")
+        #self.__dbconnection.commit()
+        #command = self.__dbconnection.cursor()
+        #command.execute("SELECT * FROM users;")
+        #print(command.fetchall())
+        #self.__dbconnection.commit()
+        #self.__dbconnection.close()
 #.execute("""create table users (firstname) """)
 database.getInstance().createtable()
 

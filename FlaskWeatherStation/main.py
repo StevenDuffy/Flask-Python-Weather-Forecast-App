@@ -10,14 +10,13 @@ import datetime
 
 app = Flask(__name__)
 
-#   Connects to BBC weather and returns xml of Weather Data
-#	weather_bbc = 'https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/2653941'
-#	tree = etree.parse(urlopen(weather_bbc))
-#	return tree
-
-
 @app.route("/", methods=['GET'])
 def next_day_forecast():
+	return render_template('login.html')
+
+
+@app.route("/forecast", methods=['GET'])
+def home():
 	return render_template('home.html')
 
 
@@ -29,17 +28,17 @@ def location_next_day_forecast():
 		
 		return render_template('home.html', weather_data_one=weather_data_one)
 	except:		
-		# Need to generate the error message for the user.
 		# return redirect(url_for('next_day_forecast', location=False))
 		return render_template('home.html', error = True)
-
-# Original method. Gets current weather so will likely be used for the index page.
-# @app.route("/", methods=['GET', 'POST'])
-
 
 def home():
 	Weather = getweatherapi('Cambridge')
 	return render_template('home.html', weather=Weather)
+
+#   Connects to BBC weather and returns xml of Weather Data
+#	weather_bbc = 'https://weather-broker-cdn.api.bbci.co.uk/en/forecast/rss/3day/2653941'
+#	tree = etree.parse(urlopen(weather_bbc))
+#	return tree
 
 # Original html, I had to remove it from home.html temporarily to test other features.
 # <p> According to WeatherApi.com:	</p>
