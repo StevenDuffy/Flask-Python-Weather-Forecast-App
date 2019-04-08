@@ -6,7 +6,7 @@ import datetime
 import urllib
 
 
-def get_tomorrow_forecast(location, days_to_add):
+def get_forecast(location, days_to_add):
 	today = datetime.date.today()
 	tomorrow = (today + datetime.timedelta(days= days_to_add)).strftime("%y-%m-%d")
 	# Hard-coded. Need to adjust and encode this.

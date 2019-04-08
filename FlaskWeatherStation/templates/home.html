@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
   <title>WeatherWatch</title>
   <meta charset="utf-8">
@@ -23,6 +24,9 @@
             break;
           case "Thunder":
             x[i].src = "static/thunder.gif";
+            break;            
+          case "Snow":
+            x[i].src = "static/snow.gif";
             break;
           default:
             x[i].src = "#";
@@ -30,6 +34,7 @@
         }
       }
     }
+
     function validate() {
       var location = document.forms["locationForm"]["location"].value;
       if (location == "") {
@@ -37,15 +42,26 @@
         return false;
       }
     }
-    
-    function Hide() {
-      if (document.getElementById("row1").style.display == "" || document.getElementById("row1").style.display == "block") {
+
+    function Previous() {
+      if (document.getElementById("row2").style.display == "block") {
+        document.getElementById("row2").style.display = "none";
+        document.getElementById("row1").style.display = "block";
+      }
+      else {
+        document.getElementById("row3").style.display = "none";
+        document.getElementById("row2").style.display = "block";
+      }
+    }
+
+    function Next() {
+      if (document.getElementById("row1").style.display == "block") {
         document.getElementById("row1").style.display = "none";
         document.getElementById("row2").style.display = "block";
       }
-      else if (document.getElementById("row2").style.display = "block") {
-        document.getElementById("row1").style.display = "block";
+      else {
         document.getElementById("row2").style.display = "none";
+        document.getElementById("row3").style.display = "block";
       }
     }
 
@@ -59,44 +75,101 @@
     <p>3-Day Weather Forecast</p>
   </div>
   <div class="container spacing">
-    <form name="locationForm" action="/location" method="GET" onsubmit="return validate()">
+    <form name="locationForm" action="/locationforecast" method="GET" onsubmit="return validate()">
       <input name="location" class="text_muted text" type="text" placeholder="Enter city here..">
-      <input class="btn btn-light btn-sm" type="submit" value="Submit">
+      <input class="btn btn-success btn-sm" type="submit" value="Submit">     
     </form>
-
-
-    {% if error %}
-    <p class="text-info small">Location not found.</p>
-    {% endif %}
+     {% if error %}
+      <p class="text-info small">Location not found.</p>
+      {% endif %}
   </div>
+    
+  
 
 
   <!--Will look at looping this and also adding alt text-->
   {% if weather_data_one %}
-  <div class="container alignment">
-    <div class="row" style="justify-content:center;">
-      <p>Showing: {{weather_data_one[0].date}}</p>
-    </div>
-    <div class="row" style="justify-content:center;">
-      <input  type="button" class="btn btn-light btn-sm" value ="Previous" onclick="Hide()" style="display:block; width: 80px;">
-      <input type="button" class="btn btn-light btn-sm" value="Next" onclick="Hide()" style="display:block; width: 80px;">
-    </div>
-  </div>
-  <div class="container alignment" id="row1">
-    <div class="row">
-      {% for data in weather_data_one %}
-      <div class="col-sm">
-        <h6>{{data.time}}</h6>
-        <img>
-        <p class="weather">{{data.weather}}</p>
-        <p>{{data.temperature}}<sup>o</sup>C</p>
+  <div style="display:block;" id="row1">
+    <div class="container alignment">
+      <div class="row" style="justify-content:center;">
+        <p>Showing: {{weather_data_one[0].date}}</p>
       </div>
-      {% endfor %}
-      {% endif %}
+      <div class="row" style="justify-content:center;">
+
+        <input type="button" class="btn btn-light btn-sm" value="Next" onclick="Next()"
+          style="display:block; width: 80px;">
+      </div>
+    </div>
+    <div class="container alignment">
+      <div class="row">
+        {% for data in weather_data_one %}
+        <div class="col-sm">
+          <h6>{{data.time}}</h6>
+          <img>
+          <p class="weather">{{data.weather}}</p>
+          <p>{{data.temperature}}<sup>o</sup>C</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
     </div>
   </div>
 
-  
+  {% if weather_data_two %}
+  <div style="display:none;" id="row2">
+    <div class="container alignment">
+      <div class="row" style="justify-content:center;">
+        <p>Showing: {{weather_data_two[0].date}}</p>
+      </div>
+      <div class="row" style="justify-content:center;">
+        <input type="button" class="btn btn-light btn-sm" value="Previous" onclick="Previous()"
+          style="display:block; width: 80px;">
+        <input type="button" class="btn btn-light btn-sm" value="Next" onclick="Next()"
+          style="display:block; width: 80px;">
+      </div>
+    </div>
+    <div class="container alignment">
+      <div class="row">
+        {% for data in weather_data_two %}
+        <div class="col-sm mycol">
+          <h6>{{data.time}}</h6>
+          <img>
+          <p class="weather">{{data.weather}}</p>
+          <p>{{data.temperature}}<sup>o</sup>C</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+
+  {% if weather_data_three %}
+  <div style="display:none;" id="row3">
+    <div class="container alignment">
+      <div class="row" style="justify-content:center;">
+        <p>Showing: {{weather_data_three[0].date}}</p>
+      </div>
+      <div class="row" style="justify-content:center;">
+        <input type="button" class="btn btn-light btn-sm" value="Previous" onclick="Previous()"
+          style="display:block; width: 80px;">
+      </div>
+    </div>
+    <div class="container alignment">
+      <div class="row">
+        {% for data in weather_data_three %}
+        <div class="col-sm">
+          <h6>{{data.time}}</h6>
+          <img>
+          <p class="weather">{{data.weather}}</p>
+          <p>{{data.temperature}}<sup>o</sup>C</p>
+        </div>
+        {% endfor %}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
 
 </body>
 

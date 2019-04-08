@@ -1,5 +1,5 @@
 
-    img {
+img {
       max-width: 100px;
       border-radius: 15px;
     }
@@ -11,11 +11,11 @@
     .text {
       font-size: 0.87rem;
       vertical-align: middle;
-      border-radius: 2px;
+      border-radius: 2px;      
     }
-    .spacing{
-      margin-bottom:20px;
-    }
+
+    
+     
     
     
   

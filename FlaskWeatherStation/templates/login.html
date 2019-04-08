@@ -13,12 +13,26 @@
     <div class="container">
         <div class="row" style="justify-content: center; align-items: center; height: 100%;">
             <div class="col-sm-3">
-                <form action="/location" >
-                    <label for="username" style="display: block;"><b>Username</b></label>
-                    <input type="text" placeholder="Enter Username" name="username" required style="display: block;">
-                    <label for="psw" style="display: block;"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required style="display: block; margin-bottom: 10px;">
-                    <input type="submit" value="Login" class="btn-" style="display: block;">
+                <form action="/home" method="POST">
+                    <div>
+                        <label for="username" style="display: block;"><b>Username</b></label>
+                        <input type="text" class="text " style="display: block;" placeholder="Enter Username"
+                            name="username" required>
+                    </div>
+                    <div>
+                        <label for="psw" style="display: block;"><b>Password</b></label>
+                        <input type="password" class="text" style="display: block; margin-bottom: 6px;" placeholder="Enter Password"
+                            name="psw" required>
+                        {% if logged_out %}
+                        <p class="text-info small">Log in required.</p>
+                        {% endif %}
+                        {% if invalid_credentials %}
+                        <p class="text-info small">Incorrect password or username.</p>
+                        {% endif %}
+                    </div>
+                    <div>
+                        <input type="submit" value="Login" class="btn btn-success btn-sm">
+                    </div>
                 </form>
             </div>
         </div>
