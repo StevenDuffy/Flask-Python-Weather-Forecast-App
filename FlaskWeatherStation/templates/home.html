@@ -164,14 +164,15 @@
 <!-- Inline styles need to be resolved -->
 
 <body onload="generateimages()">
-  <ul>    
-    <li style="float:right">
-    <form action="/" method="GET" >
-      <input type="submit" value= "Logout">
-    </form>
-    </li>
-  
-  </ul>
+  <div>
+    <ul>
+      <li style="float:right">
+        <form action="/logout" method="GET">
+          <input type="submit" value="Logout" class="btn-logout">
+        </form>
+      </li>
+    </ul>
+  </div>
   <div class="jumbotron text-center">
     <h1>WeatherWatch</h1>
     <p>3-Day Weather Forecast</p>

@@ -1,23 +1,23 @@
-from flask import Flask, render_template, url_for, flash, redirect, request
+from flask import Flask, render_template, url_for, flash, redirect, request, session
 import requests
 import simplejson as json
-#import xml.etree.ElementTree as etree
 from urllib.request import urlopen
-#from getweatherapi import *
 from getforecast import get_forecast
 import datetime
 from database import database
 from functools import wraps
-
+import os
 
 app = Flask(__name__)
 
-user = None
+app.secret_key = os.urandom(24)
+
+#user = None
 
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
-        if user == None:			
+        if 'user' not in session:			
             return render_template('login.html', logged_out=True)
         return f(*args, **kwargs)
     return decorated_function
@@ -30,8 +30,9 @@ def Login():
 
 @app.route("/logout")
 def Logout():
-	global user
-	user = None
+	session.pop('user', None)
+	#global user
+	#user = None
 	return redirect(url_for('Login')) 
 
 
@@ -44,8 +45,9 @@ def Home():
 		credentials["username"] = request.form.get('username')
 		credentials["password"] = request.form.get('psw')
 		if (dataconn.verify_user(credentials)):
-			global user 
-			user = credentials
+			session['user'] = credentials["username"]			
+			#global user 
+			#user = credentials
 			return render_template('home.html')
 		else:
 			return render_template('login.html', invalid_credentials=True)
