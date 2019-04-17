@@ -11,27 +11,35 @@
 
 <body>
     <div class="container">
-        <div class="row" style="justify-content: center; align-items: center; height: 100%;">
+        <div class="row form-center">
             <div class="col-sm-3">
                 <form action="/home" method="POST">
                     <div>
-                        <label for="username" style="display: block;"><b>Username</b></label>
-                        <input type="text" class="text " style="display: block;" placeholder="Enter Username"
-                            name="username" required>
+                        <label for="username" class="block-elements"><b>Username</b></label>
+                        <input type="text" class="text block-elements" placeholder="Enter Username" name="username" required>
                     </div>
                     <div>
-                        <label for="psw" style="display: block;"><b>Password</b></label>
-                        <input type="password" class="text" style="display: block; margin-bottom: 6px;" placeholder="Enter Password"
-                            name="psw" required>
-                        {% if logged_out %}
+                        <label for="psw" class="block-elements"><b>Password</b></label>
+                        <input type="password" class="text block-elements" style="margin-bottom: 6px;"
+                            placeholder="Enter Password" name="psw" required>
+
+
+
+                        {% if log_in_required %}
                         <p class="text-info small">Log in required.</p>
                         {% endif %}
                         {% if invalid_credentials %}
                         <p class="text-info small">Incorrect password or username.</p>
                         {% endif %}
+
                     </div>
                     <div>
                         <input type="submit" value="Login" class="btn btn-success btn-sm">
+
+                    </div>
+                    <div>
+                        <p class="text-info small">Need an account?<strong><a href="{{ url_for('register') }}"> Sign
+                                    up!</a></strong></p>
                     </div>
                 </form>
             </div>

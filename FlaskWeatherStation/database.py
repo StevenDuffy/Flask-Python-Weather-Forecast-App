@@ -8,24 +8,66 @@ class database:
         self.pointer = self.db.cursor()
     
     def verify_user(self, credentials):        
-        query = self.pointer.execute("SELECT password FROM users WHERE user_name = :username", credentials)
+        query = self.pointer.execute("SELECT password FROM users WHERE username = :username", credentials)
         stored_password = query.fetchone()        
         self.db.commit()
-        self.db.close()
-        print(stored_password)
+        
+        # print(stored_password)
         if (stored_password == None):
             return False
         if (credentials["password"] == stored_password[0]):
             return True
         else:
             return False
+
+    def check_username_exists(self, credentials): 
+        query = self.pointer.execute("SELECT username FROM users WHERE username = :username", credentials)
+        username_found = query.fetchone()        
+        self.db.commit()
+        
+        # print(stored_password)
+        if (username_found == None):
+            return False
+        else:
+            return True
+
+    def add_user(self, credentials):   
+        self.db    
+        self.pointer.execute("INSERT INTO users VALUES (:username, :first_name, :second_name, :password)", credentials)               
+        self.db.commit()
+        
+
+    def close(self):
+        self.db.close()
+             
+        
+   
         
 
 #credentials = {}
 #credentials["username"] = "SDuffy"
 #credentials["password"] = "Dragon"
+#credentials["first_name"] = "David"
+#credentials["second_name"] = "Duffy"
+
+
+### Database queries 
+#
 #d = database()
-#print(d.verify_user(credentials))
+#print(d.add_user(credentials))
+#c = d.pointer
+
+#
+### Database creation ###
+#
+# c.execute("""CREATE TABLE users (username TEXT PRIMARY KEY NOT NULL,
+#                                first_name TEXT NOT NULL,
+#                                second_name TEXT NOT NULL,
+#                                password TEXT NOT NULL);""")
+
+#d.db.commit()
+#d.db.close()
+# print(d.verify_user(credentials))
 
 			
 

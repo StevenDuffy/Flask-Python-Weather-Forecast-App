@@ -1,0 +1,62 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+
+<head>
+    <title>Weather Station Login</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
+</head>
+
+<body>
+    <div class="container">
+        <div class="row form-center" >
+            <div class="col-sm-3">
+
+                <form action="/registered/login" method="POST">
+                    <div>
+                        <label for="firstName" class="block-elements"><b>First Name</b></label>
+                        <input type="text" class="text block-elements" placeholder="Enter your first name.." name="firstName" required>
+                    </div>
+
+                    <div>
+                        <label for="secondName" class="block-elements"><b>Surname</b></label>
+                        <input type="text" class="text block-elements" placeholder="Enter your surname.." name="secondName" required>
+                    </div>
+                    
+                    <div>
+                        <label for="username" class="block-elements"><b>Username</b></label>
+                        <input type="text" class="text block-elements" placeholder="Enter Username" name="username" required>
+                    </div>
+
+                    <div>
+                        <label for="psw" class="block-elements"><b>Password</b></label>
+                        <input type="password" class="text block-elements" style="margin-bottom: 6px;" placeholder="Enter Password" name="psw" required>
+                    </div>
+                    <div>
+                            {% if user_exists %}
+                            <p class="text-info small">Username already taken.</p>
+                            {% endif %}
+
+                            {% if invalid_credentials %}
+                            <p class="text-info small">Incorrect password or username.</p>
+                            {% endif %}
+                    </div>
+
+                    <div>
+                        <input type="submit" value="Submit" class="btn btn-success btn-sm">
+                    </div>
+
+                    <div>
+                        <p class="text-info small">Already a member?<strong><a href="{{ url_for('login') }}"> Log in!</a></strong></p>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

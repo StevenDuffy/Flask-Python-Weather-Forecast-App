@@ -41,7 +41,19 @@ img {
       border: none;
       background-color:#e9ecef;      
     }
-    
+    .block-elements{
+      display: block;
+    }
+    .center-contents{
+      justify-content: center; 
+      align-items: center;
+      height: 100%;
+    }
+    .form-center{
+      justify-content: center; 
+      align-items: center; 
+      height: 100%;
+    }
     
      
     

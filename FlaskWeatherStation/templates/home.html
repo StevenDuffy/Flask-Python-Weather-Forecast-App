@@ -8,7 +8,7 @@
   <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='style.css')}}">
 
   <script>
-    function generateimages() {
+    function generateImages() {
       var x = document.getElementsByTagName("img");
       var y = document.getElementsByClassName("weather")
       var snow = 0
@@ -59,7 +59,7 @@
       }
 
 
-      Activity(weather)
+      activity(weather)
 
     }
 
@@ -71,7 +71,7 @@
       }
     }
 
-    function Previous() {
+    function previous() {
       if (document.getElementById("row2").style.display == "block") {
         document.getElementById("row2").style.display = "none";
         document.getElementById("row1").style.display = "block";
@@ -82,7 +82,7 @@
       }
     }
 
-    function Next() {
+    function next() {
       if (document.getElementById("row1").style.display == "block") {
         document.getElementById("row1").style.display = "none";
         document.getElementById("row2").style.display = "block";
@@ -92,7 +92,7 @@
         document.getElementById("row3").style.display = "block";
       }
     }
-    function Activity(weather) {
+    function activity(weather) {
 
       var Snowing_dict = {
         1: 'Make a Snowman!',
@@ -163,13 +163,11 @@
 </head>
 <!-- Inline styles need to be resolved -->
 
-<body onload="generateimages()">
+<body onload="generateImages()">
   <div>
     <ul>
-      <li style="float:right">
-        <form action="/logout" method="GET">
-          <input type="submit" value="Logout" class="btn-logout">
-        </form>
+      <li style="float:right">        
+         <a href="{{ url_for('logout') }}">Logout</a>       
       </li>
     </ul>
   </div>
@@ -199,7 +197,7 @@
       </div>
       <div class="row" style="justify-content:center;">
 
-        <input type="button" class="btn btn-light btn-sm" value="Next" onclick="Next()"
+        <input type="button" class="btn btn-light btn-sm" value="Next" onclick="next()"
           style="display:block; width: 80px;">
       </div>
     </div>
@@ -225,9 +223,9 @@
         <p>Showing: {{weather_data_two[0].date}}</p>
       </div>
       <div class="row" style="justify-content:center;">
-        <input type="button" class="btn btn-light btn-sm" value="Previous" onclick="Previous()"
+        <input type="button" class="btn btn-light btn-sm" value="Previous" onclick="previous()"
           style="display:block; width: 80px;">
-        <input type="button" class="btn btn-light btn-sm" value="Next" onclick="Next()"
+        <input type="button" class="btn btn-light btn-sm" value="Next" onclick="next()"
           style="display:block; width: 80px;">
       </div>
     </div>
@@ -254,7 +252,7 @@
         <p>Showing: {{weather_data_three[0].date}}</p>
       </div>
       <div class="row" style="justify-content:center;">
-        <input type="button" class="btn btn-light btn-sm" value="Previous" onclick="Previous()"
+        <input type="button" class="btn btn-light btn-sm" value="Previous" onclick="previous()"
           style="display:block; width: 80px;">
       </div>
     </div>
@@ -279,10 +277,10 @@
     <p class="text-center"> <strong> What Should You Do Today? </strong> </p>
   </div>
   <div class="text-center">
-    <input type="button" onclick="generateimages()" value="GO">
+    <input type="button" onclick="generateImages()" value="GO">
   </div>
   <br>
-  <p class="text-center"><strong id="activity"> </strong> </p>
+  <p class="text-center"><strong id="activity"></strong></p>
 
 
 
