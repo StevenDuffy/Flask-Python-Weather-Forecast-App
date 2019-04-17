@@ -10,6 +10,10 @@
 </head>
 
 <body>
+        <div class="jumbotron text-center">
+                <h1>WeatherWatch</h1>
+                <p>3-Day Weather Forecast</p>
+              </div>
     <div class="container">
         <div class="row form-center">
             <div class="col-sm-3">
@@ -20,26 +24,22 @@
                     </div>
                     <div>
                         <label for="psw" class="block-elements"><b>Password</b></label>
-                        <input type="password" class="text block-elements" style="margin-bottom: 6px;"
-                            placeholder="Enter Password" name="psw" required>
-
-
-
+                        <input type="password" class="text block-elements" style="margin-bottom: 6px;" placeholder="Enter Password" name="psw" required>
+                        {% if registration_succeeded %}
+                        <p class="text-info small">Registration successful! Log in to continue.</p>
+                        {% endif %}
                         {% if log_in_required %}
                         <p class="text-info small">Log in required.</p>
                         {% endif %}
                         {% if invalid_credentials %}
                         <p class="text-info small">Incorrect password or username.</p>
-                        {% endif %}
-
+                        {% endif %} 
                     </div>
                     <div>
                         <input type="submit" value="Login" class="btn btn-success btn-sm">
-
                     </div>
                     <div>
-                        <p class="text-info small">Need an account?<strong><a href="{{ url_for('register') }}"> Sign
-                                    up!</a></strong></p>
+                        <p class="text-info small">Need an account?<strong><a href="{{ url_for('register') }}"> Sign up!</a></strong></p>
                     </div>
                 </form>
             </div>

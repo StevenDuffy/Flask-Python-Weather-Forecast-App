@@ -10,6 +10,10 @@
 </head>
 
 <body>
+        <div class="jumbotron text-center">
+                <h1>WeatherWatch</h1>
+                <p>3-Day Weather Forecast</p>
+              </div>
     <div class="container">
         <div class="row form-center" >
             <div class="col-sm-3">
@@ -35,13 +39,9 @@
                         <input type="password" class="text block-elements" style="margin-bottom: 6px;" placeholder="Enter Password" name="psw" required>
                     </div>
                     <div>
-                            {% if user_exists %}
-                            <p class="text-info small">Username already taken.</p>
-                            {% endif %}
-
-                            {% if invalid_credentials %}
-                            <p class="text-info small">Incorrect password or username.</p>
-                            {% endif %}
+                        {% if user_exists %}
+                        <p class="text-info small">Username already taken.</p>
+                        {% endif %}                           
                     </div>
 
                     <div>

@@ -7,6 +7,7 @@ import datetime
 from database import database
 from functools import wraps
 import os
+from hash import hash_string
 
 app = Flask(__name__)
 
@@ -42,7 +43,7 @@ def register_user():
 		credentials["first_name"] = request.form.get('firstName')
 		credentials["second_name"] = request.form.get('secondName')
 		credentials["username"] = request.form.get('username')
-		credentials["password"] = request.form.get('psw')
+		credentials["password"] = hash_string(request.form.get('psw'))
 		if (dataconn.check_username_exists(credentials)):
 			dataconn.close()
 			return render_template("register.html", user_exists=True)
@@ -65,7 +66,7 @@ def home():
 	if request.method == 'POST':
 		credentials = {}
 		credentials["username"] = request.form.get('username')
-		credentials["password"] = request.form.get('psw')
+		credentials["password"] = hash_string(request.form.get('psw'))
 		if (dataconn.verify_user(credentials)):
 			dataconn.close()
 			session['user'] = credentials["username"]			
