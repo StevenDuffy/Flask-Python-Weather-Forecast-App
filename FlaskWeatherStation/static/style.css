@@ -1,61 +1,81 @@
 
 img {
-      max-width: 100px;
-      border-radius: 15px;
-    }
+  max-width: 100px;
+  border-radius: 15px;
+}
 
-    .alignment {
-      text-align: center;     
-    }
+.alignment {
+  text-align: center;     
+}
 
-    .text {
-      font-size: 0.87rem;
-      vertical-align: middle;
-      border-radius: 2px;      
-    }
-    ul {
-      list-style-type: none;
-      margin: 0;
-      padding: 0;
-      overflow: hidden;
-      background-color: #e9ecef;
-    }
-    
-    li {
-      float: left;
-    }
-    
-    li a {
-      display: block;
-      color: grey;
-      text-align: center;
-      padding: 5px 16px;
-      text-decoration: none;
-    }
-    
-    li a:hover{
-      color: rgb(228, 208, 208);
-    }
+.text {
+  font-size: 0.87rem;
+  vertical-align: middle;
+  border-radius: 2px;      
+}
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #e9ecef;
+}
 
-    .btn-logout{
-      border: none;
-      background-color:#e9ecef;      
-    }
-    .block-elements{
-      display: block;
-    }
-    .center-contents{
-      justify-content: center; 
-      align-items: center;
-      height: 100%;
-    }
-    .form-center{
-      justify-content: center; 
-      align-items: center; 
-      height: 50%;
-    }
-   
-     
-    
-    
-  
+li {
+  float: left;
+}
+
+li a {
+  display: block;
+  color: grey;
+  text-align: center;
+  padding: 5px 16px;
+  text-decoration: none;
+}
+
+li a:hover{
+  color: rgb(228, 208, 208);
+}
+
+.btn-logout{
+  border: none;
+  background-color:#e9ecef;      
+}
+.block-elements{
+  border:55;
+  background: white;
+  display: block;
+  margin: 20px auto;
+  text-align: center;
+  border: 2px solid #3498db;
+  padding: 14px 10px;
+  width: 200px;
+  outline: none;
+  color: black;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+.text-login
+{
+  font-size: 1.00rem;
+  text-align: center;
+  border-radius: 0.5px;     
+}    
+.block-elements:focus{
+  width: 280px;
+  border-color: #2ecc71;
+}
+.center-contents{
+  justify-content: center; 
+  align-items: center;
+  height: 100%;
+}
+.form-center{
+  justify-content: center; 
+  align-items: center; 
+  height: 50%;
+}
+
+ 
+
+
