@@ -216,60 +216,7 @@
     </div>
   </div>
 
-  {% if weather_data_two %}
-  <div style="display:none;" id="row2">
-    <div class="container alignment">
-      <div class="row" style="justify-content:center;">
-        <p>Showing: {{weather_data_two[0].date}}</p>
-      </div>
-      <div class="row" style="justify-content:center;">
-        <input type="button" class="btn btn-light btn-sm" value="Previous" onclick="previous()"
-          style="display:block; width: 80px;">
-        <input type="button" class="btn btn-light btn-sm" value="Next" onclick="next()"
-          style="display:block; width: 80px;">
-      </div>
-    </div>
-    <div class="container alignment">
-      <div class="row">
-        {% for data in weather_data_two %}
-        <div class="col-sm mycol">
-          <h6>{{data.time}}</h6>
-          <img>
-          <p class="weather">{{data.weather}}</p>
-          <p>{{data.temperature}}<sup>o</sup>C</p>
-        </div>
-        {% endfor %}
-        {% endif %}
-      </div>
-    </div>
-  </div>
-
-
-  {% if weather_data_three %}
-  <div style="display:none;" id="row3">
-    <div class="container alignment">
-      <div class="row" style="justify-content:center;">
-        <p>Showing: {{weather_data_three[0].date}}</p>
-      </div>
-      <div class="row" style="justify-content:center;">
-        <input type="button" class="btn btn-light btn-sm" value="Previous" onclick="previous()"
-          style="display:block; width: 80px;">
-      </div>
-    </div>
-    <div class="container alignment">
-      <div class="row">
-        {% for data in weather_data_three %}
-        <div class="col-sm">
-          <h6>{{data.time}}</h6>
-          <img>
-          <p class="weather">{{data.weather}}</p>
-          <p>{{data.temperature}}<sup>o</sup>C</p>
-        </div>
-        {% endfor %}
-        {% endif %}
-      </div>
-    </div>
-  </div>
+  commiting
 
 
 
