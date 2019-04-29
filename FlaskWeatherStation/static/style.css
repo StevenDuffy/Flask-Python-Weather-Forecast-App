@@ -43,12 +43,18 @@ li a:hover{
 }
 .block-elements{
   border:55;
-  background: white;
-  display: block;
-  margin: 20px auto;
+  display: block;  
   text-align: center;
   border: 2px solid #3498db;
-  padding: 14px 10px;
+  padding: 5px 5px;
+  width: 200px;
+  outline: none;
+  color: black;
+  border-radius: 24px;
+  transition: 0.25s;
+}
+.unblock-elements{  
+  display: block;  
   width: 200px;
   outline: none;
   color: black;
@@ -62,7 +68,7 @@ li a:hover{
   border-radius: 0.5px;     
 }    
 .block-elements:focus{
-  width: 280px;
+  width: 240px;
   border-color: #2ecc71;
 }
 .center-contents{

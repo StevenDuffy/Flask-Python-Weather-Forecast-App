@@ -19,11 +19,11 @@
             <div class="col-sm-3">
                 <form action="/home" method="POST">
                     <div>
-                        <label for="username" class="block-elements"><b>Username</b></label>
+                        <label for="username" class="unblock-elements"><b>Username</b></label>
                         <input type="text" class="text block-elements" placeholder="Enter Username" name="username" required>
                     </div>
                     <div>
-                        <label for="psw" class="block-elements"><b>Password</b></label>
+                        <label for="psw" class="unblock-elements"><b>Password</b></label>
                         <input type="password" class="text block-elements" style="margin-bottom: 6px;" placeholder="Enter Password" name="psw" required>
                         {% if registration_succeeded %}
                         <p class="text-info small">Registration successful! Log in to continue.</p>
