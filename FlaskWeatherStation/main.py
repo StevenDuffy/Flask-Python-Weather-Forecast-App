@@ -11,10 +11,12 @@ from hash import hash_string
 
 app = Flask(__name__)
 
+# Genrates a secret key to encrypt session data with.
 app.secret_key = os.urandom(24)
 
 #user = None
 
+# Decorator wraps endpoints that require the user to be logged in and blocks access if not logged in. 
 def login_required(f):
     @wraps(f)
     def decorated_function(*args, **kwargs):
@@ -23,11 +25,12 @@ def login_required(f):
         return f(*args, **kwargs)
     return decorated_function
 
+# Root endpoint presents login page. 
 @app.route("/")
 def login():
 	return render_template('login.html')
 
-
+# Endpoint used when user logs out. Removes session.
 @app.route("/login")
 def logout():
 	session.pop('user', None)
@@ -35,6 +38,8 @@ def logout():
 	#user = None
 	return redirect(url_for('login')) 
 
+# Endpoint for users registering. Sends user to login page if successful or advises user
+# they already exist.
 @app.route("/registered/login" , methods=['POST', 'GET'])
 def register_user():
 	dataconn = database()
@@ -54,12 +59,13 @@ def register_user():
 	else:
 		abort(403)
 
-
+# Endpoint directs user to register page.
 @app.route("/register", methods=['POST', 'GET'])
 def register():
 	return render_template('register.html')
 
-
+# Successful login presents home page. Failed login directs user to login page with 
+# invalid credentials message.
 @app.route("/home", methods=['POST', 'GET'])
 def home():
 	dataconn = database()
@@ -78,7 +84,8 @@ def home():
 	else:
 		return render_template('login.html', log_in_required=True )
 
-
+# Gets three-day weather data for the submitted location and generates this on the home 
+# page. If data is not found, the home page is generated with a location not found message.
 @app.route("/locationforecast", methods=['GET','POST'])
 @login_required
 def location_next_day_forecast():

@@ -2,7 +2,7 @@ from urllib.request import urlopen
 import requests 
 
 
-
+# Original method for getting weather data but this is no longer used. 
 def getweatherapi(Location):
 	Weather_api = 'https://api.openweathermap.org/data/2.5/weather?APPID=89da9ee78fce51911e8ca20b9906d704&q='
 	# Address+Location Returns location relevant data

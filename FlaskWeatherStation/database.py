@@ -1,17 +1,18 @@
 import sqlite3
 
-
+# Provides a connection to the database.
 class database:
 
+    # Creates database connection and cursor.
     def __init__(self):
         self.db = sqlite3.connect('users.db')
         self.pointer = self.db.cursor()
     
+    # Checks if given user credentials match a set credentials stored in the databse.
     def verify_user(self, credentials):        
         query = self.pointer.execute("SELECT password FROM users WHERE username = :username", credentials)
         stored_password = query.fetchone()        
-        self.db.commit()
-        
+        self.db.commit()        
         # print(stored_password)
         if (stored_password == None):
             return False
@@ -20,23 +21,24 @@ class database:
         else:
             return False
 
+    # Checks if given credentials already exist in the database.
     def check_username_exists(self, credentials): 
         query = self.pointer.execute("SELECT username FROM users WHERE username = :username", credentials)
         username_found = query.fetchone()        
-        self.db.commit()
-        
+        self.db.commit()        
         # print(stored_password)
         if (username_found == None):
             return False
         else:
             return True
 
+    # Adds given credentials to the database.
     def add_user(self, credentials):   
         self.db    
         self.pointer.execute("INSERT INTO users VALUES (:username, :first_name, :second_name, :password)", credentials)               
         self.db.commit()
         
-
+    # Closes connection to the database.
     def close(self):
         self.db.close()
              

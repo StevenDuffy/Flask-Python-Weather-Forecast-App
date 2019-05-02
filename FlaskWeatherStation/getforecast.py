@@ -5,7 +5,7 @@ import requests
 import datetime
 import urllib
 
-
+# Returns 3-hourly forecast data for a given day and location.  
 def get_forecast(location, days_to_add):
 	today = datetime.date.today()
 	tomorrow = (today + datetime.timedelta(days= days_to_add)).strftime("%y-%m-%d")
